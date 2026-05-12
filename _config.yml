@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Chorigen Help Center: FAQs, Tutorials & Troubleshooting
+title: "Chorigen Help Center: FAQs, Tutorials & Troubleshooting"
 email: support@chorigen.com
 description: >- # this means to ignore newlines until "baseurl:"
   Get help with Chorigen!
@@ -25,12 +25,12 @@ url: "https://help.chorigen.com"
 timezone: CET
 
 # global variables
-chorigenBrand: <span class="fw-bold text-primary-emphasis">Chorigen</span>
-designApp: <a href="https://studio.chorigen.com" target="_blank">Studio</a>
-portalApp: <a href="https://portal.chorigen.com" target="_blank">Portal</a>
+chorigenBrand: "<span class=\"fw-bold text-primary-emphasis\">Chorigen</span>"
+designApp: "<a href=\"https://studio.chorigen.com\" target=\"_blank\">Studio</a>"
+portalApp: "<a href=\"https://portal.chorigen.com\" target=\"_blank\">Portal</a>"
 
-link4OrgAccountRegister: https://portal.chorigen.com/Account/Register
-link4MemberRegister: https://portal.chorigen.com/Account/MemberRegister
+link4OrgAccountRegister: "https://portal.chorigen.com/Account/Register"
+link4MemberRegister: "https://portal.chorigen.com/Account/MemberRegister"
 
 # Build settings
 markdown: kramdown
