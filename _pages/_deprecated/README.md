@@ -6,35 +6,49 @@ permalink: /deprecated/
 
 # Deprecated Features
 
-This section contains documentation for features that are no longer supported or have been replaced.
+This section contains documentation for features and content that have been archived during the Chorigen rebrand and site reorganization.
 
 ## About Deprecated Documentation
 
 We keep this documentation available for:
-- **Historical reference** — Understanding how features worked in the past
-- **Migration support** — Helping users transition to new features
-- **Troubleshooting legacy systems** — For customers still using older versions
+- **Historical reference** — Understanding previous site structure
+- **Content preservation** — Maintaining old documentation temporarily
+- **Migration support** — Helping users find updated content
 
 ---
 
-## Deprecated Features List
+## Archived Content
 
-*No deprecated features documented yet.*
+The following content has been moved to this folder during the May 2026 rebrand:
 
-When features are deprecated, they will be listed here with:
-- Deprecation date
-- End-of-life date
-- Replacement feature
-- Migration guide
+| Content Section | Status | Notes |
+|----------------|--------|-------|
+| **form-actions/** | Archived | May 12, 2026 |
+| **form-flows/** | Archived | May 12, 2026 |
+| **publish-forms/** | Archived | May 12, 2026 |
+| **forms/** | Archived | May 12, 2026 |
+| **workflows/** | Archived | May 12, 2026 |
+| **events-and-subscriptions/** | Archived | May 12, 2026 |
+| **settings/** | Archived | May 12, 2026 |
+| **start/** | Archived | May 12, 2026 |
+
+---
+
+## Current Documentation
+
+**Active tutorials:**
+- [How to Create an Organization](/tutorials/create-organization) — Step-by-step guide
+
+**More tutorials coming soon!**
 
 ---
 
 ## Questions?
 
-If you're using a deprecated feature and need help migrating to the current version:
+If you're looking for specific documentation that's been archived:
 
 📧 **Email:** [support@chorigen.com](mailto:support@chorigen.com)  
-💬 **Chat:** Available in the Portal app
+💬 **Help:** Visit [help.chorigen.com](https://help.chorigen.com)
 
 ---
 
