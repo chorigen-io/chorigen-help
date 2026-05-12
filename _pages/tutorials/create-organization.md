@@ -4,153 +4,237 @@ title: How to Create an Organization
 permalink: /tutorials/create-organization
 ---
 
-# How to Create an Organization
+<div class="bd-intro pt-2 ps-lg-2">
+    <div class="d-md-flex align-items-center justify-content-start mb-4">
+        <h1 class="bd-title" id="content">How to Create an Organization</h1>
+    </div>
+    <p class="bd-lead">
+        Learn how to create your first organization in Chorigen. This step-by-step tutorial walks you through the entire process with screenshots and detailed instructions.
+    </p>
+    
+    <p class="mb-3">
+        <span class="badge bg-success me-2">Beginner</span>
+        <span class="badge bg-secondary me-2">⏱️ 3 minutes</span>
+        <span class="badge bg-info">✅ Chorigen account required</span>
+    </p>
 
-Learn how to create your first organization in Chorigen.
+    <div class="alert alert-primary" role="alert">
+        <strong>📹 Interactive Tutorial Available!</strong>
+        <p class="mb-0">
+            <a href="https://app.tango.us/app/workflow/Create-Organization-in-Chorigen-4c4202138e2d4b6eaa307b66130c0edc" target="_blank" class="alert-link">
+                Follow this interactive step-by-step guide →
+            </a>
+        </p>
+        <small class="text-muted">Our interactive tutorial includes screenshots and detailed instructions for each step.</small>
+    </div>
+</div>
 
-**⏱️ Time:** 3 minutes  
-**📊 Difficulty:** Beginner  
-**✅ Prerequisites:** Chorigen account
+<div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+    <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+        On this page
+        <svg class="bi d-md-none ms-2" aria-hidden="true">
+            <use xlink:href="#chevron-expand"></use>
+        </svg>
+    </button>
+    <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
+    <hr class="d-none d-md-block my-2 ms-3">
+    <div class="collapse bd-toc-collapse" id="tocContents">
+        <nav id="TableOfContents">
+            <ul>
+                <li><a href="#what-is-organization">What is an Organization?</a></li>
+                <li><a href="#steps-overview">Steps Overview</a></li>
+                <li><a href="#detailed-instructions">Detailed Instructions</a>
+                    <ul>
+                        <li><a href="#step-1-access">Step 1: Access Your Account</a></li>
+                        <li><a href="#step-2-navigate">Step 2: Navigate to Organizations</a></li>
+                        <li><a href="#step-3-create">Step 3: Create New Organization</a></li>
+                        <li><a href="#step-4-fill">Step 4: Fill in Details</a></li>
+                        <li><a href="#step-5-save">Step 5: Save Your Organization</a></li>
+                    </ul>
+                </li>
+                <li><a href="#whats-next">What's Next?</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
 
----
+<div class="bd-content ps-lg-2">
+    
+    <h2 id="what-is-organization">
+        What is an Organization? <a class="anchor-link" href="#what-is-organization" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>An organization in Chorigen allows you to:</p>
+    <ul>
+        <li><strong>Group related forms</strong> — Keep all your team's forms in one place</li>
+        <li><strong>Manage team access</strong> — Control who can view and edit forms</li>
+        <li><strong>Share resources</strong> — Share forms, workflows, and settings across your team</li>
+        <li><strong>Track submissions</strong> — View all submissions for your organization's forms</li>
+    </ul>
 
-## What You'll Learn
+    <h2 id="steps-overview">
+        Steps Overview <a class="anchor-link" href="#steps-overview" aria-label="Link to this section"></a>
+    </h2>
+    
+    <ol>
+        <li><strong>Log in</strong> to <a href="https://portal.chorigen.com" target="_blank">Chorigen Portal</a></li>
+        <li><strong>Navigate</strong> to the Organizations page</li>
+        <li><strong>Click</strong> "Create Organization" button</li>
+        <li><strong>Fill in</strong> your organization details:
+            <ul>
+                <li>Organization name (required)</li>
+                <li>Description (optional)</li>
+            </ul>
+        </li>
+        <li><strong>Save</strong> to create your organization</li>
+    </ol>
 
-- How to access the organization creation page
-- What information you need to provide
-- How to confirm your organization is created
+    <hr class="my-4">
 
----
+    <h2 id="detailed-instructions">
+        Detailed Instructions <a class="anchor-link" href="#detailed-instructions" aria-label="Link to this section"></a>
+    </h2>
 
-## Interactive Tutorial
+    <h3 id="step-1-access">
+        Step 1: Access Your Account <a class="anchor-link" href="#step-1-access" aria-label="Link to this section"></a>
+    </h3>
+    <ol>
+        <li>Go to <a href="https://portal.chorigen.com" target="_blank">https://portal.chorigen.com</a></li>
+        <li>Log in with your email and password</li>
+        <li>You'll be redirected to your dashboard</li>
+    </ol>
 
-📹 **[Follow this interactive step-by-step guide →](https://app.tango.us/app/workflow/Create-Organization-in-Chorigen-4c4202138e2d4b6eaa307b66130c0edc)**
+    <h3 id="step-2-navigate">
+        Step 2: Navigate to Organizations <a class="anchor-link" href="#step-2-navigate" aria-label="Link to this section"></a>
+    </h3>
+    <ol>
+        <li>In the left sidebar, click <strong>"Organizations"</strong></li>
+        <li>Or use the top navigation menu to find <strong>"Organizations"</strong></li>
+    </ol>
 
-Our interactive tutorial walks you through each step with screenshots and detailed instructions.
+    <h3 id="step-3-create">
+        Step 3: Create New Organization <a class="anchor-link" href="#step-3-create" aria-label="Link to this section"></a>
+    </h3>
+    <ol>
+        <li>Click the <strong>"Create Organization"</strong> button (usually in the top right)</li>
+        <li>A form will appear</li>
+    </ol>
 
----
+    <h3 id="step-4-fill">
+        Step 4: Fill in Organization Details <a class="anchor-link" href="#step-4-fill" aria-label="Link to this section"></a>
+    </h3>
+    
+    <p><strong>Required fields:</strong></p>
+    <dl>
+        <dt>Organization Name</dt>
+        <dd>
+            Choose a clear, descriptive name
+            <ul class="mt-2">
+                <li>Example: "Acme Corp Forms"</li>
+                <li>Example: "Marketing Department"</li>
+                <li>Example: "HR Team"</li>
+            </ul>
+        </dd>
+    </dl>
 
-## Quick Overview
+    <p><strong>Optional fields:</strong></p>
+    <dl>
+        <dt>Description</dt>
+        <dd>
+            Add details about the organization's purpose
+            <ul class="mt-2">
+                <li>Example: "Forms for customer onboarding"</li>
+                <li>Example: "Internal HR forms and surveys"</li>
+            </ul>
+        </dd>
+    </dl>
 
-### What is an Organization?
+    <div class="alert alert-info" role="alert">
+        <strong>💡 Tips:</strong>
+        <ul class="mb-0">
+            <li>Use a name that's easy for team members to recognize</li>
+            <li>Keep it concise (under 50 characters)</li>
+            <li>Avoid special characters that might cause issues</li>
+        </ul>
+    </div>
 
-An organization in Chorigen allows you to:
-- **Group related forms** — Keep all your team's forms in one place
-- **Manage team access** — Control who can view and edit forms
-- **Share resources** — Share forms, workflows, and settings across your team
-- **Track submissions** — View all submissions for your organization's forms
+    <h3 id="step-5-save">
+        Step 5: Save Your Organization <a class="anchor-link" href="#step-5-save" aria-label="Link to this section"></a>
+    </h3>
+    <ol>
+        <li>Review your information</li>
+        <li>Click <strong>"Create"</strong> or <strong>"Save"</strong></li>
+        <li>You'll see a confirmation message</li>
+        <li>Your new organization appears in the list</li>
+    </ol>
 
-### Steps Summary
+    <hr class="my-4">
 
-1. **Log in** to [Chorigen Portal](https://portal.chorigen.com)
-2. **Navigate** to the Organizations page
-3. **Click** "Create Organization" button
-4. **Fill in** your organization details:
-   - Organization name (required)
-   - Description (optional)
-5. **Save** to create your organization
+    <h2 id="whats-next">
+        What's Next? <a class="anchor-link" href="#whats-next" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>Now that you have an organization, you can:</p>
+    
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">👥 Invite Team Members</h5>
+                    <p class="card-text">Add colleagues to collaborate on forms and submissions.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">📝 Create Your First Form</h5>
+                    <p class="card-text">Start building forms with our design studio.</p>
+                    <a href="https://studio.chorigen.com" target="_blank" class="btn btn-sm btn-primary">Open Design Studio →</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">⚙️ Configure Settings</h5>
+                    <p class="card-text">Customize branding, security, and notifications.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🚀 Publish Forms</h5>
+                    <p class="card-text">Share forms with your audience and start collecting responses.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+    </div>
 
----
+    <hr class="my-4">
 
-## Detailed Instructions
+    <h2 id="troubleshooting">
+        Troubleshooting <a class="anchor-link" href="#troubleshooting" aria-label="Link to this section"></a>
+    </h2>
+    
+    <h4>Can't find the "Create Organization" button?</h4>
+    <p>
+        Make sure you're logged in to your Chorigen account. If you're a member of another organization, you may need to switch contexts or contact your organization administrator.
+    </p>
 
-### Step 1: Access Your Account
+    <h4>Organization name already exists?</h4>
+    <p>
+        Each organization name must be unique within the system. Try adding your company name or a qualifier to make it unique (e.g., "Marketing Team - Acme Corp").
+    </p>
 
-1. Go to [https://portal.chorigen.com](https://portal.chorigen.com)
-2. Log in with your email and password
-3. You'll be redirected to your dashboard
+    <h4>Need more help?</h4>
+    <p>
+        Contact our support team at <a href="mailto:support@chorigen.com">support@chorigen.com</a> or visit the <a href="/tutorials">tutorials page</a> for more guides.
+    </p>
 
-### Step 2: Navigate to Organizations
-
-1. In the left sidebar, click **"Organizations"**
-2. Or use the top navigation menu to find **"Organizations"**
-
-### Step 3: Create New Organization
-
-1. Click the **"Create Organization"** button (usually in the top right)
-2. A form will appear
-
-### Step 4: Fill in Organization Details
-
-**Required fields:**
-- **Organization Name:** Choose a clear, descriptive name
-  - Example: "Acme Corp Forms"
-  - Example: "Marketing Department"
-  - Example: "HR Team"
-
-**Optional fields:**
-- **Description:** Add details about the organization's purpose
-  - Example: "Forms for customer onboarding"
-  - Example: "Internal HR forms and surveys"
-
-**Tips:**
-- Use a name that's easy for team members to recognize
-- Keep it concise (under 50 characters)
-- Avoid special characters that might cause issues
-
-### Step 5: Save Your Organization
-
-1. Review your information
-2. Click **"Create"** or **"Save"**
-3. You'll see a confirmation message
-4. Your new organization appears in the list
-
----
-
-## What's Next?
-
-Now that you've created your organization, you can:
-
-- **[Invite team members](#)** — Add colleagues to collaborate
-- **[Create your first form](#)** — Start building forms in your organization
-- **[Configure settings](#)** — Set up organization preferences
-- **[Set up workflows](#)** — Automate form processes
-
----
-
-## Troubleshooting
-
-### "Organization name already exists"
-
-**Problem:** The name you chose is already taken  
-**Solution:** Try a different name or add a unique identifier (e.g., "Acme Corp - 2026")
-
-### Can't find the "Create Organization" button
-
-**Problem:** Button not visible  
-**Solution:** 
-- Check your account permissions (you may need admin access)
-- Try refreshing the page
-- Contact support if the issue persists
-
-### Form won't submit
-
-**Problem:** Clicking "Create" doesn't work  
-**Solution:**
-- Ensure all required fields are filled
-- Check for error messages under the form fields
-- Try a different browser
-- Clear your browser cache
-
----
-
-## Video Tutorial
-
-Prefer video? Watch our [interactive guide with screenshots](https://app.tango.us/app/workflow/Create-Organization-in-Chorigen-4c4202138e2d4b6eaa307b66130c0edc) that walks through each step.
-
----
-
-## Need More Help?
-
-**Can't create an organization?**
-- 📧 Email: [support@chorigen.com](mailto:support@chorigen.com)
-- 💬 Chat: Available in the Portal app (bottom right)
-
-**Want to learn more?**
-- [Understanding Organizations](/settings/organizations)
-- [Managing Team Access](/settings/permissions)
-- [Organization Settings](/settings/organization-settings)
-
----
-
-**Last updated:** May 12, 2026
+</div>

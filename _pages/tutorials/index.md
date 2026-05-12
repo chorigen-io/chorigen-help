@@ -4,26 +4,78 @@ title: Tutorials
 permalink: /tutorials/
 ---
 
-# Tutorials
+<div class="bd-intro pt-2 ps-lg-2">
+    <div class="d-md-flex align-items-center justify-content-start mb-4">
+        <h1 class="bd-title" id="content">Tutorials</h1>
+    </div>
+    <p class="bd-lead">
+        Step-by-step guides to help you get the most out of Chorigen. Learn how to create forms, manage organizations, and publish your work.
+    </p>
+</div>
 
-Step-by-step guides to help you get the most out of Chorigen.
+<div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+    <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+        On this page
+        <svg class="bi d-md-none ms-2" aria-hidden="true">
+            <use xlink:href="#chevron-expand"></use>
+        </svg>
+    </button>
+    <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
+    <hr class="d-none d-md-block my-2 ms-3">
+    <div class="collapse bd-toc-collapse" id="tocContents">
+        <nav id="TableOfContents">
+            <ul>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#coming-soon">Coming Soon</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
 
-## Getting Started
+<div class="bd-content ps-lg-2">
+    
+    <h2 id="getting-started">
+        Getting Started <a class="anchor-link" href="#getting-started" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>New to Chorigen? Start here:</p>
+    
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="create-organization" class="text-decoration-none">How to Create an Organization</a>
+            </h5>
+            <p class="card-text">
+                Set up your first organization in minutes. Learn how to create an organization account, configure settings, and start managing your team.
+            </p>
+            <div class="mb-2">
+                <span class="badge bg-success me-2">Beginner</span>
+                <span class="badge bg-secondary">⏱️ 3 minutes</span>
+            </div>
+            <a href="create-organization" class="btn btn-primary btn-sm">Start Tutorial →</a>
+        </div>
+    </div>
 
-New to Chorigen? Start here:
+    <hr class="my-4">
 
-- **[How to Create an Organization](create-organization)** — Set up your first organization in minutes
+    <h2 id="coming-soon">
+        Coming Soon <a class="anchor-link" href="#coming-soon" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>More tutorials are being added regularly. Check back soon for guides on:</p>
+    
+    <ul>
+        <li><strong>Creating your first form</strong> — Design and build forms with our studio</li>
+        <li><strong>Inviting team members</strong> — Add colleagues and manage permissions</li>
+        <li><strong>Setting up workflows</strong> — Automate form processes and approvals</li>
+        <li><strong>Publishing forms</strong> — Share forms with your audience</li>
+        <li><strong>Managing submissions</strong> — View, export, and analyze responses</li>
+    </ul>
 
-## Coming Soon
+    <hr class="my-4">
 
-More tutorials are being added regularly. Check back soon for guides on:
+    <div class="alert alert-info" role="alert">
+        <strong>Need help?</strong> Contact us at <a href="mailto:support@chorigen.com" class="alert-link">support@chorigen.com</a>
+    </div>
 
-- Creating your first form
-- Inviting team members
-- Setting up workflows
-- Publishing forms
-- Managing submissions
-
----
-
-**Need help?** Contact us at [support@chorigen.com](mailto:support@chorigen.com)
+</div>
