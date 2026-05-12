@@ -1,66 +1,585 @@
-# Development on MacOS
+# Chorigen Help Center
 
-## Building development environment
+Public documentation and tutorials for Chorigen users.
 
-Note that we use the root priviledge to install the packages below.
+**Live Site:** https://help.chorigen.com  
+**Repository:** https://github.com/chorigen-io/chorigen-help  
+**Built with:** Jekyll (Ruby-based static site generator)
 
-To prevent any issue from different versions of Ruby, use rbenv to manage the versions:
+---
 
+## 📋 Table of Contents
+
+- [Quick Start](#quick-start)
+- [Development Setup](#development-setup)
+  - [Windows (Native)](#windows-native-recommended)
+  - [Windows (WSL)](#windows-wsl)
+  - [macOS](#macos)
+  - [Linux](#linux)
+- [Development Workflow](#development-workflow)
+- [Project Structure](#project-structure)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Troubleshooting](#troubleshooting)
+
+---
+
+## 🚀 Quick Start
+
+If you already have Ruby and Bundler installed:
+
+```bash
+# Clone repository
+git clone https://github.com/chorigen-io/chorigen-help.git
+cd chorigen-help
+
+# Install dependencies
+bundle install
+
+# Run local server
+bundle exec jekyll serve
+
+# Open browser to http://localhost:4000
 ```
+
+---
+
+## 🛠️ Development Setup
+
+### Windows (Native) — Recommended
+
+**Prerequisites:**
+- Ruby 3.2+ with DevKit
+- Git
+
+**Step 1: Install Ruby**
+
+1. Download **Ruby+Devkit** from [RubyInstaller](https://rubyinstaller.org/downloads/)
+   - Recommended: `Ruby+Devkit 3.2.3-1 (x64)`
+2. Run installer:
+   - ✅ Check "Add Ruby executables to PATH"
+   - ✅ Check "Run 'ridk install' to setup MSYS2"
+3. At the end, a terminal opens asking to install MSYS2 components:
+   - Press `Enter` to install (Option 1, 2, 3)
+
+**Step 2: Verify Installation**
+
+Open **new** PowerShell window:
+
+```powershell
+# Check Ruby
+ruby -v
+# Should show: ruby 3.2.3 (or similar)
+
+# Check gem
+gem -v
+# Should show: 3.4.x (or similar)
+```
+
+**Step 3: Install Bundler**
+
+```powershell
+gem install bundler
+```
+
+**Step 4: Clone and Setup Project**
+
+```powershell
+# Clone repository
+git clone https://github.com/chorigen-io/chorigen-help.git
+cd chorigen-help
+
+# Install Jekyll and dependencies
+bundle install
+```
+
+**Step 5: Run Local Server**
+
+```powershell
+# Start Jekyll server
+bundle exec jekyll serve
+
+# Server starts at http://localhost:4000
+# Press Ctrl+C to stop
+```
+
+**Benefits of Native Windows:**
+- ✅ Faster than WSL
+- ✅ Works directly with Windows filesystem
+- ✅ Auto-reload works perfectly
+- ✅ No Linux subsystem needed
+
+---
+
+### Windows (WSL)
+
+**Use WSL if:**
+- You prefer Linux environment
+- Native Windows setup has issues
+- You need Linux tools
+
+**Step 1: Install WSL**
+
+Open PowerShell as Administrator:
+
+```powershell
+# Install WSL and Ubuntu
+wsl --install
+
+# Reboot if prompted
+```
+
+**Step 2: Launch Ubuntu**
+
+```bash
+# Update packages
+sudo apt update
+sudo apt upgrade -y
+
+# Install Ruby dependencies
+sudo apt install -y ruby-full build-essential zlib1g-dev git
+
+# Configure gem installation directory
+echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install bundler
+gem install bundler
+```
+
+**Step 3: Clone and Setup**
+
+```bash
+# Navigate to Windows filesystem (better for editing)
+cd /mnt/d/FormLang_Docs
+
+# Clone repository (if not already cloned)
+git clone https://github.com/chorigen-io/chorigen-help.git
+cd chorigen-help
+
+# Install dependencies
+bundle install
+```
+
+**Step 4: Run Server**
+
+```bash
+# Start server (accessible from Windows browser)
+bundle exec jekyll serve --host 0.0.0.0
+
+# Visit: http://localhost:4000
+```
+
+**Note:** WSL may not auto-reload changes. Restart server after edits.
+
+---
+
+### macOS
+
+**Step 1: Install rbenv (Ruby Version Manager)**
+
+Recommended to avoid conflicts with system Ruby:
+
+```bash
+# Install rbenv and ruby-build
 brew install rbenv ruby-build
+
+# Add to shell configuration
 echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-Then install ruby
-```
+**Step 2: Install Ruby**
+
+```bash
+# Install Ruby 3.2.3
 rbenv install 3.2.3
+
+# Set as local version for this project
 rbenv local 3.2.3
-(or rbenv global 3.2.3)
+
+# Verify
 ruby -v
+# Should show: ruby 3.2.3
 ```
 
-Next, install bundler
-```
+**Step 3: Install Bundler**
+
+```bash
 gem install bundler
 ```
 
-Finally, 
-```
+**Step 4: Clone and Setup**
+
+```bash
+# Clone repository
 git clone https://github.com/chorigen-io/chorigen-help.git
 cd chorigen-help
-cd formlang_help
+
+# Install dependencies
 bundle install
 ```
 
-## Local development 
+**Step 5: Run Server**
 
+```bash
+bundle exec jekyll serve
+
+# Visit: http://localhost:4000
 ```
+
+---
+
+### Linux
+
+**Ubuntu/Debian:**
+
+```bash
+# Install Ruby and dependencies
+sudo apt update
+sudo apt install -y ruby-full build-essential zlib1g-dev git
+
+# Configure gem installation
+echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
+echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install bundler
+gem install bundler
+
+# Clone and setup
+git clone https://github.com/chorigen-io/chorigen-help.git
+cd chorigen-help
+bundle install
+
+# Run server
 bundle exec jekyll serve
 ```
 
-# Development on Windows 11
+**Fedora/RHEL/CentOS:**
 
-We use the windows linux subsystem for setting up the development
-environment.
+```bash
+sudo dnf install -y ruby ruby-devel @development-tools redhat-rpm-config git
+gem install bundler
+# ... then same as Ubuntu steps above
+```
 
-## Building development environment
+---
 
-Step 1: Install windows linux subsystem
+## 💻 Development Workflow
 
-Step 2: Install ubuntu (no password)
+### Starting the Server
 
+```bash
+# Basic server (auto-reloads on file changes)
+bundle exec jekyll serve
 
-## Local development
+# With live reload (instant browser refresh)
+bundle exec jekyll serve --livereload
 
-We do not use the Linux file system for managing the project. Instead,
-we use the Windows file system to do this job. However, we use the
-Linux subsystem to run the local server. A minor issue of doing so is
-that the local server will not detect the changes of the file content
-automatically.
+# Include draft posts
+bundle exec jekyll serve --drafts
 
+# Custom port
+bundle exec jekyll serve --port 4001
+```
 
-# Deployment
+**Access site:** http://localhost:4000
+
+### File Organization
+
+```
+chorigen-help/
+├── _config.yml          # Site configuration (title, URL, variables)
+├── CNAME                # Custom domain (help.chorigen.com)
+├── index.html           # Homepage
+├── Gemfile              # Ruby dependencies
+│
+├── _pages/              # All content pages
+│   ├── tutorials/       # Step-by-step guides
+│   ├── start/           # Getting started
+│   ├── forms/           # Form documentation
+│   ├── workflows/       # Workflow docs
+│   └── _deprecated/     # Obsolete features
+│
+├── _layouts/            # Page templates
+│   ├── default.html     # Main layout
+│   └── fullpage.html    # Full-width layout
+│
+├── _includes/           # Reusable components
+│   └── common/          # Shared partials
+│
+└── assets/              # Static files
+    ├── css/             # Stylesheets
+    ├── js/              # JavaScript
+    └── img/             # Images
+```
+
+### Creating New Pages
+
+**Tutorial pages:**
+
+```markdown
+---
+layout: default
+title: Your Tutorial Title
+permalink: /tutorials/your-tutorial
+---
+
+# Your Tutorial Title
+
+Tutorial content here...
+```
+
+**Adding to navigation:** Edit `_data/navigation.yml` (if exists) or update index pages.
+
+### Auto-Reload Behavior
+
+**Auto-reloads on change:**
+- Markdown files (`*.md`)
+- HTML files
+- Layouts (`_layouts/`)
+- Includes (`_includes/`)
+- CSS/JS in `assets/`
+
+**Requires server restart:**
+- `_config.yml` changes
+- `Gemfile` changes (after running `bundle install`)
+
+### Building for Production
+
+```bash
+# Build static site (output to _site/)
+bundle exec jekyll build
+
+# Build with production environment
+JEKYLL_ENV=production bundle exec jekyll build
+```
+
+---
+
+## 📁 Project Structure
+
+### Key Files
+
+- **`_config.yml`** — Site configuration, global variables
+- **`CNAME`** — Custom domain configuration (help.chorigen.com)
+- **`Gemfile`** — Ruby dependencies (Jekyll, plugins)
+- **`index.html`** — Homepage
+
+### Content Directories
+
+- **`_pages/tutorials/`** — User tutorials with Tango guides
+- **`_pages/start/`** — Getting started guides
+- **`_pages/forms/`** — Form reference documentation
+- **`_pages/workflows/`** — Workflow documentation
+- **`_pages/_deprecated/`** — Deprecated feature docs
+
+### Template Directories
+
+- **`_layouts/`** — Page templates
+- **`_includes/`** — Reusable components (header, footer, etc.)
+
+### Assets
+
+- **`assets/css/`** — Stylesheets
+- **`assets/js/`** — JavaScript
+- **`assets/img/`** — Images
+
+---
+
+## 🚀 Deployment
+
+### GitHub Pages (Production)
+
+**Automatic deployment:**
+1. Push changes to `main` branch
+2. GitHub Pages builds automatically
+3. Site deploys to https://help.chorigen.com
+
+**Configuration:**
+- **Repository:** chorigen-io/chorigen-help
+- **Branch:** main
+- **Folder:** / (root)
+- **Custom domain:** help.chorigen.com
+- **HTTPS:** Enforced
+
+### DNS Configuration
+
+**Required CNAME record:**
+```
+Type:  CNAME
+Name:  help
+Value: chorigen-io.github.io
+TTL:   3600 (or Auto)
+```
+
+**Verify DNS:**
+```bash
+nslookup help.chorigen.com
+# Should return: chorigen-io.github.io
+```
+
+### Deploy Workflow
+
+```bash
+# 1. Make changes on feature branch
+git checkout -b feature/new-tutorial
+# ... make changes ...
+git add .
+git commit -m "Add new tutorial"
+git push -u origin feature/new-tutorial
+
+# 2. Create Pull Request on GitHub
+# 3. Review and merge to main
+# 4. GitHub Pages deploys automatically (1-2 minutes)
+```
+
+---
+
+## 🤝 Contributing
+
+### Adding New Tutorials
+
+1. Create file in `_pages/tutorials/your-tutorial.md`
+2. Use tutorial template:
+
+```markdown
+---
+layout: default
+title: How to Do Something
+permalink: /tutorials/do-something
+---
+
+# How to Do Something
+
+**⏱️ Time:** 5 minutes  
+**📊 Difficulty:** Beginner  
+**✅ Prerequisites:** Account required
+
+## Interactive Tutorial
+[Follow this guide →](https://app.tango.us/app/workflow/YOUR-ID)
+
+## Steps
+1. Step one
+2. Step two
+...
+```
+
+3. Add to `_pages/tutorials/index.md` catalog
+4. Test locally, then submit PR
+
+### Deprecating Features
+
+1. Move page to `_pages/_deprecated/`
+2. Add deprecation notice at top:
+
+```markdown
+---
+layout: default
+title: Old Feature (Deprecated)
+deprecated: true
+replacement: "New Feature"
+---
+
+# Old Feature (Deprecated)
+
+⚠️ **This feature was deprecated on [DATE].**
+
+**Use instead:** [New Feature](/path/to/new)  
+**Migration guide:** [Migration Guide](/guides/migrate)
+```
+
+3. Update `_pages/_deprecated/README.md` index
+
+---
+
+## 🔧 Troubleshooting
+
+### "Command not found: bundle"
+
+**Solution:**
+```bash
+gem install bundler
+```
+
+### "Permission denied" installing gems
+
+**Solution:**
+```bash
+# Don't use sudo! Configure user-local gem installation:
+echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
+echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+### "Could not find gem 'jekyll'"
+
+**Solution:**
+```bash
+bundle install
+```
+
+### Server not auto-reloading on Windows
+
+**Solution:** Use native Windows setup (not WSL) or manually restart server after changes.
+
+### Port 4000 already in use
+
+**Solution:**
+```bash
+# Use different port
+bundle exec jekyll serve --port 4001
+
+# Or kill process using port 4000
+netstat -ano | findstr :4000
+taskkill /PID <PID> /F
+```
+
+### Changes to `_config.yml` not reflected
+
+**Solution:** Restart server after editing `_config.yml`.
+
+### Gem installation fails on Windows
+
+**Solution:**
+1. Ensure DevKit is installed (use Ruby+Devkit installer)
+2. Run in PowerShell (not CMD)
+3. Restart terminal after Ruby installation
+
+### "SSL certificate problem" on Windows
+
+**Solution:**
+```bash
+# Update SSL certificates
+gem update --system
+```
+
+---
+
+## 📚 Resources
+
+- **Jekyll Documentation:** https://jekyllrb.com/docs/
+- **GitHub Pages:** https://docs.github.com/en/pages
+- **Ruby Documentation:** https://www.ruby-lang.org/en/documentation/
+- **Markdown Guide:** https://www.markdownguide.org/
+
+---
+
+## 📧 Support
+
+**Questions or issues?**
+- 💬 **Internal:** Slack #engineering channel
+- 📧 **Email:** admin@chorigen.com
+- 🐛 **Issues:** https://github.com/chorigen-io/chorigen-help/issues
+
+---
+
+**Last Updated:** May 12, 2026  
+**Maintained by:** @chorigen-io/leadership
 
 
 
