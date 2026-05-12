@@ -27,7 +27,8 @@ gem install bundler
 
 Finally, 
 ```
-git clone ... formlang_help
+git clone https://github.com/chorigen-io/chorigen-help.git
+cd chorigen-help
 cd formlang_help
 bundle install
 ```
