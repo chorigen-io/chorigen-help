@@ -1,0 +1,368 @@
+---
+layout: default
+title: Automate Invention Submissions via Chorigen
+permalink: /tutorials/automate-invention-submissions
+---
+
+<div class="bd-intro pt-2 ps-lg-2">
+    <div class="d-md-flex align-items-center justify-content-start mb-4">
+        <h1 class="bd-title" id="content">Automate Invention Submissions via Chorigen</h1>
+    </div>
+    <p class="bd-lead">
+        Learn how to design an automated workflow for managing invention submissions in Chorigen Studio. This tutorial demonstrates how to create a streamlined process for collecting, evaluating, and routing invention disclosures using conditional logic and form-based data collection.
+    </p>
+    
+    <p class="mb-3">
+        <span class="badge bg-warning text-dark me-2">Intermediate</span>
+        <span class="badge bg-secondary me-2">⏱️ 20 minutes</span>
+    </p>
+
+    <div class="alert alert-info" role="alert">
+        <strong>📋 Prerequisites</strong>
+        <p class="mb-0">
+            Before starting this tutorial, make sure you have:
+        </p>
+        <ul class="mb-0 mt-2">
+            <li>Created an organization (<a href="create-organization" class="alert-link">see tutorial</a>)</li>
+            <li>Basic understanding of form creation in Chorigen (<a href="create-form" class="alert-link">see tutorial</a>)</li>
+            <li>Familiarity with BPMN 2.0 workflow concepts (optional but helpful)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+    <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+        On this page
+        <svg class="bi d-md-none ms-2" aria-hidden="true">
+            <use xlink:href="#chevron-expand"></use>
+        </svg>
+    </button>
+    <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
+    <hr class="d-none d-md-block my-2 ms-3">
+    <div class="collapse bd-toc-collapse" id="tocContents">
+        <nav id="TableOfContents">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#interactive-tutorial">Interactive Tutorial</a></li>
+                <li><a href="#workflow-structure">Workflow Structure</a></li>
+                <li><a href="#key-concepts">Key Concepts</a></li>
+                <li><a href="#whats-next">What's Next?</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="bd-content ps-lg-2">
+    
+    <h2 id="overview">
+        Overview <a class="anchor-link" href="#overview" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>
+        In this tutorial, you'll build an "Invention Submission" workflow that automates the process of collecting and evaluating invention disclosures from engineers. The workflow demonstrates:
+    </p>
+
+    <ul>
+        <li><strong>Form-based data collection</strong> — Capture invention details through structured forms</li>
+        <li><strong>Conditional routing</strong> — Automatically evaluate submissions based on criteria</li>
+        <li><strong>Message passing</strong> — Share data between workflow tasks using global message references</li>
+        <li><strong>Expression-based logic</strong> — Use form field values to make routing decisions</li>
+    </ul>
+
+    <p>
+        This workflow showcases how Chorigen can streamline intellectual property management by automating the submission, evaluation, and routing of invention disclosures.
+    </p>
+
+    <hr class="my-4">
+
+    <h2 id="interactive-tutorial">
+        Interactive Tutorial <a class="anchor-link" href="#interactive-tutorial" aria-label="Link to this section"></a>
+    </h2>
+
+    <div class="alert alert-primary" role="alert">
+        <strong>📹 Step-by-Step Interactive Guide</strong>
+        <p class="mb-2">
+            <a href="https://app.tango.us/app/workflow/Automate-Invention-Submissions-via-Chorigen-a9327fa42329429d85a63ef4a4a22468" target="_blank" class="alert-link">
+                Follow this interactive tutorial with screenshots and guidance →
+            </a>
+        </p>
+        <small class="text-muted">
+            <strong>28 steps</strong> — This tutorial walks you through creating a new workflow in Chorigen Studio, configuring task properties, setting up form-based data entry, creating message references, defining conditional logic with expressions, testing expressions, and running a complete workflow test.
+        </small>
+    </div>
+
+    <h3>What You'll Build</h3>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">📝 Engineer Submission Task</h5>
+                    <p class="card-text">An <strong>Input/Data Entry</strong> task where engineers submit invention disclosure information through a structured form.</p>
+                    <ul class="mb-0">
+                        <li>Task Type: Input/Data Entry</li>
+                        <li>Form: Custom invention disclosure form</li>
+                        <li>Message Reference: InventionSubmission</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">🔀 Conditional Routing Logic</h5>
+                    <p class="card-text">Expression-based condition that evaluates submission data and routes the workflow accordingly.</p>
+                    <ul class="mb-0">
+                        <li>Expression: <code>$1.response.qVar2 > 10</code></li>
+                        <li>Determines workflow path based on field value</li>
+                        <li>Demonstrates data-driven automation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h2 id="workflow-structure">
+        Workflow Structure <a class="anchor-link" href="#workflow-structure" aria-label="Link to this section"></a>
+    </h2>
+
+    <h3>Step-by-Step Process</h3>
+
+    <ol class="mb-4">
+        <li class="mb-3">
+            <strong>Create Workflow</strong>
+            <p class="mb-1">Access the Chorigen Design Studio and create a new workflow with the name "Invention Submission".</p>
+        </li>
+        <li class="mb-3">
+            <strong>Configure General Properties</strong>
+            <p class="mb-1">Set up the workflow's basic properties including workflow name, description, and participants (Respondent and Inventor roles).</p>
+        </li>
+        <li class="mb-3">
+            <strong>Add Engineer Submission Task</strong>
+            <p class="mb-1">Create a user task called "Engineer Submission" and configure it as an Input/Data Entry task type.</p>
+        </li>
+        <li class="mb-3">
+            <strong>Attach Form</strong>
+            <p class="mb-1">Connect a form to the task for collecting invention disclosure details. This form will be displayed to engineers when they submit their inventions.</p>
+        </li>
+        <li class="mb-3">
+            <strong>Create Message Reference</strong>
+            <p class="mb-1">Define a global message reference called "InventionSubmission" to pass data between workflow tasks.</p>
+        </li>
+        <li class="mb-3">
+            <strong>Define Conditional Logic</strong>
+            <p class="mb-1">Add a condition that evaluates form data using expressions (e.g., <code>$1.response.qVar2 > 10</code>) to determine the next steps in the workflow.</p>
+        </li>
+        <li class="mb-3">
+            <strong>Test Expression</strong>
+            <p class="mb-1">Use the expression editor's test feature to verify your conditional logic works correctly with sample data.</p>
+        </li>
+        <li class="mb-3">
+            <strong>Test Workflow</strong>
+            <p class="mb-1">Generate a test application and walk through the complete workflow to ensure all tasks and conditions function as expected.</p>
+        </li>
+    </ol>
+
+    <hr class="my-4">
+
+    <h2 id="key-concepts">
+        Key Concepts <a class="anchor-link" href="#key-concepts" aria-label="Link to this section"></a>
+    </h2>
+
+    <h3>Task Configuration</h3>
+    
+    <p>The workflow uses several configuration options:</p>
+
+    <div class="table-responsive mb-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Configuration</th>
+                    <th>Purpose</th>
+                    <th>Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Task Type</strong></td>
+                    <td>Defines how users interact with the task</td>
+                    <td>Input/Data Entry, View/Inspection, SubProcess</td>
+                </tr>
+                <tr>
+                    <td><strong>Form Assignment</strong></td>
+                    <td>Links a form to the task for data collection</td>
+                    <td>"Invention Disclosure Form"</td>
+                </tr>
+                <tr>
+                    <td><strong>Message Reference</strong></td>
+                    <td>Named data container for passing information between tasks</td>
+                    <td>"InventionSubmission"</td>
+                </tr>
+                <tr>
+                    <td><strong>Conditions</strong></td>
+                    <td>Expression-based routing logic</td>
+                    <td><code>$1.response.qVar2 > 10</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Expression Syntax</h3>
+
+    <p>Use expressions to reference form data and create conditional logic:</p>
+
+    <div class="bg-light p-3 rounded mb-3">
+        <code>$&lt;task_number&gt;.response.&lt;field_id&gt;</code>
+    </div>
+
+    <p>Examples from this workflow:</p>
+    <ul>
+        <li><code>$1.response.qVar2</code> — Access the value of field <code>qVar2</code> from the first task (Engineer Submission)</li>
+        <li><code>$1.response.qVar2 > 10</code> — Check if the value is greater than 10</li>
+    </ul>
+
+    <div class="alert alert-success" role="alert">
+        <strong>💡 Pro Tip:</strong> Use the expression editor's test feature (Ctrl+T) to validate your expressions with sample data before deploying your workflow. This helps catch errors early and ensures your conditional logic works as intended.
+    </div>
+
+    <h3>Global Message References</h3>
+
+    <p>
+        Message references act as data containers that persist throughout the workflow execution. They allow different tasks to access and share the same data. In this tutorial, the "InventionSubmission" message reference stores the invention disclosure data collected in the Engineer Submission task.
+    </p>
+
+    <h3>Workflow Testing</h3>
+
+    <p>Chorigen provides two levels of testing:</p>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🧪 Expression Testing</h5>
+                    <p class="card-text">Test individual expressions with sample values to verify logic correctness.</p>
+                    <ul class="mb-0">
+                        <li>Keyboard shortcut: Ctrl+T</li>
+                        <li>Validates syntax and logic</li>
+                        <li>Returns expected results</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🎯 Workflow Testing</h5>
+                    <p class="card-text">Generate a complete test application to walk through the entire workflow.</p>
+                    <ul class="mb-0">
+                        <li>Keyboard shortcut: Ctrl+Shift+T</li>
+                        <li>Tests end-to-end flow</li>
+                        <li>Validates task transitions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h2 id="whats-next">
+        What's Next? <a class="anchor-link" href="#whats-next" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>Now that you've created an automated invention submission workflow, you can:</p>
+    
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">📊 Extend the Workflow</h5>
+                    <p class="card-text">Add more tasks to handle patent attorney review, prior art searches, and filing decisions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🔀 Add More Conditions</h5>
+                    <p class="card-text">Create complex routing logic based on multiple form fields and business rules.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🚀 Deploy to Production</h5>
+                    <p class="card-text">Publish your workflow and make it available to your engineering team for real invention submissions.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">📈 Monitor Submissions</h5>
+                    <p class="card-text">Track invention disclosures, review submission data, and analyze trends over time.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h2 id="troubleshooting">
+        Troubleshooting <a class="anchor-link" href="#troubleshooting" aria-label="Link to this section"></a>
+    </h2>
+    
+    <h4>Can't find the "Set Form" option?</h4>
+    <p>
+        Make sure you've selected "Input/Data Entry" as the task type in the Task Configuration panel. The form attachment option only appears for task types that support form-based interaction.
+    </p>
+
+    <h4>Expression test fails with "undefined" or error?</h4>
+    <p>
+        Verify that:
+        <ul>
+            <li>The field ID in your expression matches the actual field ID from your form (e.g., <code>qVar2</code>)</li>
+            <li>You're referencing the correct task number (e.g., <code>$1</code> for the first task)</li>
+            <li>The syntax is correct: <code>$taskNumber.response.fieldId</code></li>
+        </ul>
+    </p>
+
+    <h4>Message reference not available?</h4>
+    <p>
+        Global message references must be created before they can be selected in task configurations. Use the message reference creation interface to define new message types, and make sure to give them descriptive names that match your workflow's data model.
+    </p>
+
+    <h4>Workflow test doesn't launch?</h4>
+    <p>
+        Ensure that:
+        <ul>
+            <li>Your workflow has been saved (look for a success message)</li>
+            <li>All tasks are properly configured with required fields</li>
+            <li>Tasks are connected with sequence flows</li>
+            <li>Your browser allows popups from Chorigen Studio</li>
+        </ul>
+    </p>
+
+    <h4>Can't see task preview?</h4>
+    <p>
+        If the preview pane shows "No preview yet," make sure you've:
+        <ul>
+            <li>Attached a form to the task</li>
+            <li>Saved the workflow configuration</li>
+            <li>Selected the task on the canvas</li>
+        </ul>
+        The preview feature allows you to see how the form will appear to users during workflow execution.
+    </p>
+
+    <h4>Need more help?</h4>
+    <p>
+        Contact us at <a href="mailto:support@chorigen.com">support@chorigen.com</a> or check the <a href="/">documentation</a> for more detailed information about workflow design, expressions, and testing.
+    </p>
+
+</div>
