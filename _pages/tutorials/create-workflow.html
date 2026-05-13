@@ -1,0 +1,342 @@
+---
+layout: default
+title: How to Create a Workflow
+permalink: /tutorials/create-workflow
+---
+
+<div class="bd-intro pt-2 ps-lg-2">
+    <div class="d-md-flex align-items-center justify-content-start mb-4">
+        <h1 class="bd-title" id="content">How to Create a Workflow</h1>
+    </div>
+    <p class="bd-lead">
+        Learn how to design and test a multi-step workflow in Chorigen Studio. This tutorial demonstrates how Chorigen acts as the "connective tissue" between AI agents and human tasks, orchestrating collaborative workflows where humans and AI work together seamlessly.
+    </p>
+    
+    <p class="mb-3">
+        <span class="badge bg-warning text-dark me-2">Intermediate</span>
+        <span class="badge bg-secondary me-2">⏱️ 25 minutes</span>
+    </p>
+
+    <div class="alert alert-info" role="alert">
+        <strong>📋 Prerequisites</strong>
+        <p class="mb-0">
+            Before starting this tutorial, make sure you have:
+        </p>
+        <ul class="mb-0 mt-2">
+            <li>Created an organization (<a href="create-organization" class="alert-link">see tutorial</a>)</li>
+            <li>Created a form called "Quarterly Financial Snapshot" (<a href="create-form" class="alert-link">see tutorial</a>)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="bd-toc mt-3 mb-5 my-lg-0 mb-lg-5 px-sm-1 text-body-secondary">
+    <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+        On this page
+        <svg class="bi d-md-none ms-2" aria-hidden="true">
+            <use xlink:href="#chevron-expand"></use>
+        </svg>
+    </button>
+    <strong class="d-none d-md-block h6 my-2 ms-3">On this page</strong>
+    <hr class="d-none d-md-block my-2 ms-3">
+    <div class="collapse bd-toc-collapse" id="tocContents">
+        <nav id="TableOfContents">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#part1-configure-workflow">Part 1: Configure Workflow Structure</a></li>
+                <li><a href="#part2-define-logic">Part 2: Define Logic and Test</a></li>
+                <li><a href="#workflow-concepts">Key Workflow Concepts</a></li>
+                <li><a href="#whats-next">What's Next?</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="bd-content ps-lg-2">
+    
+    <h2 id="overview">
+        Overview <a class="anchor-link" href="#overview" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>
+        In this tutorial, you'll build a "Checkit Analytics" workflow that evaluates financial risk from quarterly snapshots. The workflow demonstrates how Chorigen coordinates multiple participants (both AI agents and humans) in a structured process:
+    </p>
+
+    <ol>
+        <li><strong>Context Retriever (AI Agent)</strong> — Collects financial data through a form</li>
+        <li><strong>Context Retriever Result</strong> — Reviews and inspects the collected data</li>
+        <li><strong>Confirm</strong> — Human validation step with conditional branching</li>
+        <li><strong>Auto Approval</strong> — Final confirmation message based on risk assessment</li>
+    </ol>
+
+    <p>
+        This workflow showcases how Chorigen acts as connective tissue, allowing you to define the structure and logic while different actors (AI or human) handle individual tasks.
+    </p>
+
+    <hr class="my-4">
+
+    <h2 id="part1-configure-workflow">
+        Part 1: Configure Workflow Structure <a class="anchor-link" href="#part1-configure-workflow" aria-label="Link to this section"></a>
+    </h2>
+
+    <div class="alert alert-primary" role="alert">
+        <strong>📹 Interactive Tutorial — Part 1</strong>
+        <p class="mb-2">
+            <a href="https://app.tango.us/app/workflow/Configure-Checkit-Analytics-Workflow-in-FormLang-bb3beb427cd249f4bab1e13c92ec9701" target="_blank" class="alert-link">
+                Follow this interactive step-by-step guide with screenshots →
+            </a>
+        </p>
+        <small class="text-muted">
+            <strong>58 steps</strong> — This tutorial walks you through launching Chorigen Studio, creating a new workflow, adding task nodes, configuring task types, connecting your "Quarterly Financial Snapshot" form, setting up task relationships, and saving your workflow.
+        </small>
+    </div>
+
+    <h3>What You'll Configure</h3>
+
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">🤖 Context Retriever (AI Agent)</h5>
+                    <p class="card-text">An <strong>Input/Data Entry</strong> task that collects financial information using your Quarterly Financial Snapshot form.</p>
+                    <p class="mb-0"><small class="text-muted">Represents a potential AI agent that could gather data automatically.</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">📊 Context Retriever Result</h5>
+                    <p class="card-text">A <strong>View/Inspection</strong> task for reviewing the collected data using the same form in read-only mode.</p>
+                    <p class="mb-0"><small class="text-muted">Allows humans to inspect AI-gathered information.</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">✅ Confirm</h5>
+                    <p class="card-text">A <strong>SubProcess</strong> with a <strong>Confirm</strong> semantic operation that evaluates data and branches based on conditions.</p>
+                    <p class="mb-0"><small class="text-muted">Demonstrates conditional logic in workflows.</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">🎉 Auto Approval</h5>
+                    <p class="card-text">A <strong>Confirmation Message</strong> task that notifies participants of the workflow outcome.</p>
+                    <p class="mb-0"><small class="text-muted">Final step that communicates results.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h2 id="part2-define-logic">
+        Part 2: Define Logic and Test <a class="anchor-link" href="#part2-define-logic" aria-label="Link to this section"></a>
+    </h2>
+
+    <div class="alert alert-primary" role="alert">
+        <strong>📹 Interactive Tutorial — Part 2</strong>
+        <p class="mb-2">
+            <a href="https://app.tango.us/app/workflow/Evaluate-Financial-Risk-in-Chorigen-44959ade478a46eab08626b82ce35da1" target="_blank" class="alert-link">
+                Follow this interactive step-by-step guide with screenshots →
+            </a>
+        </p>
+        <small class="text-muted">
+            <strong>19 steps</strong> — This tutorial shows you how to add conditional logic using expressions, reference form field values (like <code>$1.response.qVar8</code>), test expressions with sample data, create named conditions (e.g., "Low Risk"), generate a test application, and open task instances to see your workflow in action.
+        </small>
+    </div>
+
+    <h3>What You'll Learn</h3>
+
+    <div class="list-group mb-4">
+        <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">🔀 Conditional Branching</h5>
+            </div>
+            <p class="mb-1">Add conditions to workflow nodes that evaluate data and determine the next step in the process.</p>
+            <small class="text-muted">Example: Route to different approval paths based on financial ratios.</small>
+        </div>
+        <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">📝 Expression Editor</h5>
+            </div>
+            <p class="mb-1">Use the expression editor to create logic using form field references and comparison operators.</p>
+            <small class="text-muted">Example: <code>$1.response.qVar8 < 0.2</code> checks if a debt ratio is below 20%.</small>
+        </div>
+        <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">🧪 Testing Workflows</h5>
+            </div>
+            <p class="mb-1">Test expressions with sample values, generate test applications, and walk through workflows with real data.</p>
+            <small class="text-muted">Verify your workflow logic before deploying to production.</small>
+        </div>
+        <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">🏷️ Named Conditions</h5>
+            </div>
+            <p class="mb-1">Give meaningful names to your conditions (like "Low Risk", "High Risk") for better workflow readability.</p>
+            <small class="text-muted">Makes complex workflows easier to understand and maintain.</small>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h2 id="workflow-concepts">
+        Key Workflow Concepts <a class="anchor-link" href="#workflow-concepts" aria-label="Link to this section"></a>
+    </h2>
+
+    <h3>Task Types</h3>
+    
+    <p>Chorigen workflows support several task types that determine how participants interact with each step:</p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Task Type</th>
+                <th>Purpose</th>
+                <th>Form Usage</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Input/Data Entry</strong></td>
+                <td>Collect information from participants</td>
+                <td>Editable form fields</td>
+            </tr>
+            <tr>
+                <td><strong>View/Inspection</strong></td>
+                <td>Review data without modification</td>
+                <td>Read-only form display</td>
+            </tr>
+            <tr>
+                <td><strong>SubProcess</strong></td>
+                <td>Encapsulate logic and branching</td>
+                <td>Optional — can contain nested workflows</td>
+            </tr>
+            <tr>
+                <td><strong>Confirmation Message</strong></td>
+                <td>Display results or notifications</td>
+                <td>Message content only</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Semantic Operations</h3>
+
+    <p>
+        SubProcess tasks can be configured with <strong>semantic operations</strong> that define their behavior. The <strong>Confirm</strong> operation used in this tutorial evaluates conditions and routes the workflow based on the result.
+    </p>
+
+    <h3>Expression Syntax</h3>
+
+    <p>Reference form data in expressions using this pattern:</p>
+
+    <div class="bg-light p-3 rounded mb-3">
+        <code>$&lt;task_number&gt;.response.&lt;field_id&gt;</code>
+    </div>
+
+    <p>Examples:</p>
+    <ul>
+        <li><code>$1.response.qVar8</code> — Access the value of field <code>qVar8</code> from task 1</li>
+        <li><code>$1.response.qVar8 < 0.2</code> — Check if the value is less than 0.2</li>
+        <li><code>$2.response.companyName == "Acme Corp"</code> — Compare text values</li>
+    </ul>
+
+    <h3>AI-Human Collaboration</h3>
+
+    <p>
+        This workflow demonstrates Chorigen's core value proposition: <strong>orchestrating AI agents and human workers</strong> in structured processes. The "Context Retriever (AI Agent)" represents a future AI agent that could automatically gather financial data, while human participants review, validate, and make decisions based on that data.
+    </p>
+
+    <div class="alert alert-success" role="alert">
+        <strong>💡 Key Insight:</strong> Chorigen doesn't replace humans or AI — it coordinates them. You define <em>what</em> needs to happen and <em>when</em>, while leaving the <em>how</em> to the appropriate agent (human or AI).
+    </div>
+
+    <hr class="my-4">
+
+    <h2 id="whats-next">
+        What's Next? <a class="anchor-link" href="#whats-next" aria-label="Link to this section"></a>
+    </h2>
+    
+    <p>Now that you've created your first workflow, you're ready to:</p>
+    
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🚀 Deploy Your Workflow</h5>
+                    <p class="card-text">Publish your workflow and make it available to your team for real-world use.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">📊 Monitor Workflow Instances</h5>
+                    <p class="card-text">Track workflow progress, view submissions, and analyze results from completed workflows.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🔧 Advanced Expressions</h5>
+                    <p class="card-text">Learn complex expression syntax, mathematical operations, and data transformations.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">🤝 Integrate AI Agents</h5>
+                    <p class="card-text">Connect real AI agents to your workflow tasks and automate data collection and processing.</p>
+                    <small class="text-muted">Tutorial coming soon</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-4">
+
+    <h2 id="troubleshooting">
+        Troubleshooting <a class="anchor-link" href="#troubleshooting" aria-label="Link to this section"></a>
+    </h2>
+    
+    <h4>Can't find my form in the form selector?</h4>
+    <p>
+        Make sure you've created and saved the "Quarterly Financial Snapshot" form. Forms must be saved before they appear in workflow configuration. If you just created the form, try refreshing the workflow canvas.
+    </p>
+
+    <h4>Expression test fails with "undefined"?</h4>
+    <p>
+        Verify that the field ID in your expression matches the actual field ID in your form. Field IDs are usually like <code>qVar1</code>, <code>qVar2</code>, etc. You can check field IDs by opening the form in Design Studio and inspecting each field's properties.
+    </p>
+
+    <h4>Workflow won't save?</h4>
+    <p>
+        Ensure all required fields are filled in for each task node (especially the task name and task type). Check your network connection, as Design Studio requires connectivity to save workflows.
+    </p>
+
+    <h4>Can't generate test application?</h4>
+    <p>
+        Your workflow must be saved before you can generate a test application. Also ensure that all task nodes are properly configured and connected. Disconnected nodes or incomplete configurations will prevent test generation.
+    </p>
+
+    <h4>Test instance doesn't open?</h4>
+    <p>
+        Make sure you've clicked "Get Test Instance" after generating the test application. The test instance creates a specific workflow execution that you can interact with. If it still doesn't open, check your browser's popup blocker settings.
+    </p>
+
+    <h4>Need more help?</h4>
+    <p>
+        Contact us at <a href="mailto:support@chorigen.com">support@chorigen.com</a> or check the <a href="/">documentation</a> for more detailed information about workflow design and testing.
+    </p>
+
+</div>
